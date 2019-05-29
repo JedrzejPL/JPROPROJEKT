@@ -2,24 +2,39 @@
 #include <stdlib.h>
 #include <time.h>
 
-int losowe[10][10];
+typedef struct target{
+	int x;
+	int y;
+}list;
 
-int main(void)
-{
+void display();
 
-   srand(time(NULL));
-   for (int i = 0; i < 10; ++i) {
-      for (int j = 0; j < 10; ++j) {
-         losowe[i][j] = rand() % 10;
-            
-         printf("%d ", losowe[i][j]);
-      }
-      printf("\n");
-   }
-   return 0;
+
+int main(){
+	int size;
+	printf("Podaj wielkosc lasu \n");
+	scanf("%d",&size);
+	char forest[size][size];
+	display(size,forest);
+	return 0;
 }
 
-//void plansza()
-//void ustawienia()
-	
+void display(int size,char tab[size][size]){
+    int i,j;
+    for(int i=0;i<size;i++)
+	{
+    	for(int j=0;j<size;j++)
+	{
+            tab[i][j]='^';
+        }
+    }
 
+     for(int i=0;i<size;i++)
+	{
+        for(int j=0;j<size;j++)
+		{
+        	printf("%c ",tab[i][j]);
+        }
+        puts("");
+    }
+}
